@@ -1,14 +1,14 @@
-import React, { useState } from "react";
-import "./login.css";
-import axios from "axios";
-import { useHistory } from "react-router-dom";
+import React, { useState } from 'react';
+import './login.css';
+import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
 const Login = ({ setLoginUser }) => {
   const history = useHistory();
 
   const [user, setUser] = useState({
-    email: "",
-    password: "",
+    email: '',
+    password: '',
   });
 
   const handleChange = (e) => {
@@ -21,11 +21,11 @@ const Login = ({ setLoginUser }) => {
 
   const login = () => {
     axios
-      .post("https://whispering-everglades-85093.herokuapp.com/login", user)
+      .post('https://mernbackend-express.onrender.com/login', user)
       .then((res) => {
         alert(res.data.message);
         setLoginUser(res.data.user);
-        history.push("/");
+        history.push('/');
       });
   };
 
@@ -50,7 +50,7 @@ const Login = ({ setLoginUser }) => {
         Login
       </div>
       <div>or</div>
-      <div className="button" onClick={() => history.push("/register")}>
+      <div className="button" onClick={() => history.push('/register')}>
         Register
       </div>
     </div>
